@@ -26,6 +26,7 @@ class MyTestCase(unittest.TestCase):
         test_ship = Ship.Ship("B", "H", test_ship_position)
 
         self.assertTrue(fleet.rules_placement_ok(current_ship, test_ship), msg="Ship not blocking check does not work")
+        """"""
 
 
 if __name__ == '__main__':
