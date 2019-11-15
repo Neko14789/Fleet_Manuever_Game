@@ -39,6 +39,7 @@ print(TestValue)
 TestPlayfield.draw_playfield()
 TestPlayfield.draw_playfield_2()
 
+
 class FleetManeuverGame:
 
     def __init__(self):
