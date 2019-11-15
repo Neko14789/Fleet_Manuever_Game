@@ -1,5 +1,6 @@
 class Player:
     Player_Count = 0
+
     def __init__(self, board_size, fleet_seed, player_name="Undifined"):
         import Fleet
         import Coordinate
