@@ -39,7 +39,7 @@ print(TestValue)
 TestPlayfield.draw_playfield()
 TestPlayfield.draw_playfield_2()
 
-input("Press enter to exit ;)")
+input("Press enter to exit !")
 
 
 class FleetManeuverGame:
