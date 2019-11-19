@@ -4,7 +4,7 @@ class Ship:
     def __init__(self, ship_type, ship_alignment, ship_position):
         import Coordinate
 
-        ship_name_dict = self.__get_name_dict_local_language()
+        ship_name_dict = self._get_name_dict_local_language()
 
         ship_type_full = ship_name_dict[ship_type][0]
         ship_life_amount = ship_name_dict[ship_type][1]
@@ -93,7 +93,7 @@ class Ship:
         return self._ship_type, self._ship_type_full
 
     @staticmethod
-    def __get_name_dict_local_language():
+    def _get_name_dict_local_language():
         import locale
         system_language = locale.getlocale()[0]
 
