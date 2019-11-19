@@ -1,0 +1,11 @@
+# Ignore File
+Make exe script.txt
+Make_Python_to_exe.bat
+# Ignore File types
+*spec
+
+# Ignore Folder
+build/
+upx395win64/
+venv/
+__pycache__
