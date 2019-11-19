@@ -46,3 +46,4 @@ class FleetManeuverGame:
 
     def __init__(self):
         """"""
+        """"""
