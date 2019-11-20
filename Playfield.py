@@ -11,7 +11,6 @@ class Playfield:
         self.board_size = board_size
 #       Without this for _ in range ... every entry would not be unique and so not able to be changed individual
 
-
     def get_position_value(self, coordinate):
         return self.playfield[coordinate.y - 1][coordinate.x - 1]
 
@@ -19,7 +18,6 @@ class Playfield:
         self.playfield[coordinate.y - 1][coordinate.x - 1] = Playfield.playfield_symbols[status]
 
     def draw_playfield(self):
-        x = 1
         for x in self.playfield:
             timer = 0
             row = ""
@@ -32,9 +30,3 @@ class Playfield:
     def draw_playfield_2(self):
         for x in self.playfield:
             print(x)
-
-
-
-
-
-

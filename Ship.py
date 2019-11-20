@@ -104,6 +104,7 @@ class Ship:
             "S": ("Submarine", 2)
         }
 
+        # noinspection SpellCheckingInspection
         ship_name_dict_de = {
             "C": ("Träger", 5),
             "B": ("Schlachtschiff", 4),

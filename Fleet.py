@@ -70,6 +70,7 @@ class Fleet:
             if ship_amount_in_fleet == 10:
                 break
 
+        # noinspection PyUnboundLocalVariable
         return fleet
 
     @staticmethod
