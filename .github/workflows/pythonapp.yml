@@ -31,4 +31,19 @@ jobs:
     - name: Make exe out of the python files
       run: |
         pip install pyinstaller
-        pyinstaller --onefile --icon=Fleet_Manuever_Game.ico Fleet_Manuever_Game.py  
+        pyinstaller --onefile --icon=Fleet_Manuever_Game.ico Fleet_Manuever_Game.py
+    - name: Commit files
+      run: |
+        git config --local user.email "tekkitnick@gmail.com"
+        git config --local user.name "Nico14789"
+        git commit -m "Add EXE" -a
+    - name: Push created exe to Github
+      if: success() 
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GIT_TOKEN }}
+        
+      
+      
+      
+           
