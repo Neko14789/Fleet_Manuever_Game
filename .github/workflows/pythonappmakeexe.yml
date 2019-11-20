@@ -7,7 +7,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - name: Create local changes
+    - name: Set up Python 3.7
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.7
+    - name: Make EXE
       run: |
         pip install pyinstaller
                 pyinstaller --onefile --icon=Fleet_Manuever_Game.ico Fleet_Manuever_Game.py
