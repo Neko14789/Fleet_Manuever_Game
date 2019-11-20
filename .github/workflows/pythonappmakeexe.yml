@@ -1,0 +1,18 @@
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Create local changes
+      run: |
+        pip install pyinstaller
+                pyinstaller --onefile --icon=Fleet_Manuever_Game.ico Fleet_Manuever_Game.py
+    - name: Commit files
+      run: |
+        git config --local user.email "tekkitnick@gmail.com"
+                git config --local user.name "Nico14789"
+                git commit -m "Add Changes" -a
+    - name: Push changes created exe to Github
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GIT_TOKEN }}
