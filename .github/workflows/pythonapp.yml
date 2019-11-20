@@ -34,6 +34,8 @@ jobs:
         pyinstaller --onefile --icon=Fleet_Manuever_Game.ico Fleet_Manuever_Game.py
     - name: Commit files
       run: |
+        git config --local user.email "tekkitnick@gmail.com"
+        git config --local user.name "Nico14789"
         git commit -m "Add EXE" -a
     - name: Push created exe to Github
       if: success() 
