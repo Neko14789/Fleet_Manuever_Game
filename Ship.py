@@ -95,6 +95,7 @@ class Ship:
     @staticmethod
     def _get_name_dict_local_language():
         import locale
+        locale.setlocale(locale.LC_ALL, "")
         system_language = locale.getlocale()[0]
 
         ship_name_dict_en = {
