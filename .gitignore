@@ -9,4 +9,5 @@ Make_Python_to_exe.bat
 build/
 upx395win64/
 venv/
+dist/
 
