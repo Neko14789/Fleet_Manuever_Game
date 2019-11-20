@@ -1,3 +1,7 @@
+name: Python to EXE
+
+on: [push]
+
 jobs:
   build:
     runs-on: ubuntu-latest
