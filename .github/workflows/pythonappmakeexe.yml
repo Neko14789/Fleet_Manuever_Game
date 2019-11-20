@@ -21,6 +21,6 @@ jobs:
         git config --local user.name "Nico14789"
         git commit -m "Add Changes" -a
     - name: Push changes created exe to Github
-      uses: ad-m/github-push-action@master
+      uses: Nico14789/Fleet_Manuever_Game@master
       with:
         github_token: ${{ secrets.GIT_TOKEN }}
