@@ -1,7 +1,8 @@
 import unittest
+
+import Coordinate
 import Fleet
 import Ship
-import Coordinate
 
 
 class MyTestCase(unittest.TestCase):

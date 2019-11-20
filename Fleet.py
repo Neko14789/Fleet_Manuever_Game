@@ -1,5 +1,5 @@
-import Ship
 import Coordinate
+import Ship
 
 
 class Fleet:

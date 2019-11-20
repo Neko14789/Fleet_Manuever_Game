@@ -1,9 +1,8 @@
-import Fleet
 import Coordinate
-import Playfield
+import Fleet
 import Player
-import Ship
-import random
+import Playfield
+
 #   import numpy
 
 board_size = Coordinate.Coordinate
