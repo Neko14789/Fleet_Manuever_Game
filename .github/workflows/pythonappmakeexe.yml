@@ -18,8 +18,8 @@ jobs:
     - name: Commit files
       run: |
         git config --local user.email "tekkitnick@gmail.com"
-                git config --local user.name "Nico14789"
-                git commit -m "Add Changes" -a
+        git config --local user.name "Nico14789"
+        git commit -m "Add Changes" -a
     - name: Push changes created exe to Github
       uses: ad-m/github-push-action@master
       with:
