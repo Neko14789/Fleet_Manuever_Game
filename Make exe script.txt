@@ -1,0 +1,4 @@
+pyinstaller --upx-dir=..\upx395win64 --onefile Fleet_Manuever_Game.py
+pyinstaller --onefile Fleet_Manuever_Game.py
+
+C:\Users\NAHuebsch\PycharmProjects\Fleet_Manuever_Game
