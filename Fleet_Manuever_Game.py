@@ -40,6 +40,34 @@ print(TestValue)
 TestPlayfield.draw_playfield()
 TestPlayfield.draw_playfield_2()
 
+from tkinter import *
+
+root = Tk()
+root.title("Schiffe Versenken")
+root.resizable(False,False)
+
+
+def test():
+    print("hi")
+
+
+
+height = 10
+width = 10
+cells = {}
+for i in range(height): #Rows
+    for j in range(width): #Columns
+        b = Button(root, text="□■~", width=5, height=2, command=test)
+
+        b.grid(row=i, column=j)
+        cells[(i, j)] = b
+
+root.mainloop()
+
+
+
+
+
 input("Press enter to exit !")
 
 
