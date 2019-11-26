@@ -47,7 +47,7 @@ root.title("Schiffe Versenken")
 root.resizable(False,False)
 
 
-def test(x, y, b ):
+def test(x, y, b):
     childes=root.children
     print("hi", x, y, b)
     print("!button" in childes)
@@ -55,8 +55,8 @@ def test(x, y, b ):
 
 
 
-height = 10
-width = 10
+height = 20
+width = 20
 cells = {}
 for i in range(height): #Rows
     for j in range(width): #Columns
