@@ -46,22 +46,28 @@ root = Tk()
 root.title("Schiffe Versenken")
 root.resizable(False,False)
 
+root.update()
 
-def test(x, y, b):
+
+def test(x, y, b, buttonID):
     childes=root.children
     print("hi", x, y, b)
-    print("!button" in childes)
-
-
+    x = "!button" + format(buttonID)
+    root.children[x].configure(bg="blue")
+    print(x in childes)
 
 
 height = 20
 width = 20
 cells = {}
+timer = ""
 for i in range(height): #Rows
     for j in range(width): #Columns
         k = (j, i)
-        b = Button(root, text="□■~", width=5, height=2, command=lambda y=j, x=i, xy=k: test(y, x, xy))
+        b = Button(root, text="□■~", width=3, height=1, command=lambda y=j, x=i, xy=k, timer_=timer: test(y, x, xy, timer_))
+        if timer == "":
+            timer = 1
+        timer += 1
 #   Type Coordinate übergeben ?
 
         b.grid(row=i, column=j)
