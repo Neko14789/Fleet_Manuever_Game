@@ -47,8 +47,11 @@ root.title("Schiffe Versenken")
 root.resizable(False,False)
 
 
-def test():
-    print("hi")
+def test(x, y, b ):
+    childes=root.children
+    print("hi", x, y, b)
+    print("!button" in childes)
+
 
 
 
@@ -57,7 +60,9 @@ width = 10
 cells = {}
 for i in range(height): #Rows
     for j in range(width): #Columns
-        b = Button(root, text="□■~", width=5, height=2, command=test)
+        k = (j, i)
+        b = Button(root, text="□■~", width=5, height=2, command=lambda y=j, x=i, xy=k: test(y, x, xy))
+#   Type Coordinate übergeben ?
 
         b.grid(row=i, column=j)
         cells[(i, j)] = b
