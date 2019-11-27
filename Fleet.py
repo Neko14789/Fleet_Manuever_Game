@@ -39,11 +39,11 @@ class Fleet:
                     "Decides if the ship is horizontal or vertical"
 
                     if current_ship_alignment == "H":
-                        x = random.randrange(1, board_size.x - current_ship_length + 1 + 1)  # BS10 - CSL2 + 1 + 1
-                        y = random.randrange(1, 11)
+                        x = random.randrange(0, board_size.x - current_ship_length + 1)  # BS10 - CSL2 + 1 + 1
+                        y = random.randrange(0, 10)
                     else:
-                        x = random.randrange(1, 11)
-                        y = random.randrange(1, board_size.y - current_ship_length + 1 + 1)
+                        x = random.randrange(0, 10)
+                        y = random.randrange(0, board_size.y - current_ship_length + 1)
 
                     tmp_pos = Coordinate.Coordinate(x, y)
                     current_ship = Ship.Ship(current_ship_type, current_ship_alignment, tmp_pos)
