@@ -2,8 +2,10 @@ import Coordinate
 import Fleet
 import Player
 import Playfield
+import View_Master_UI
 
 #   import numpy
+
 
 board_size = Coordinate.Coordinate
 board_size.x = 10
@@ -42,7 +44,7 @@ print("Test 2:"+TestValue)
 TestPlayfield.draw_playfield()
 TestPlayfield.draw_playfield_2()
 
-
+UI_TEST = View_Master_UI.View()
 
 input("Press enter to exit !")
 
