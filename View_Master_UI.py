@@ -21,11 +21,28 @@ class View:
         button_frame = LabelFrame(text="Playfield of Player 1",bg="#99ccff")
         button_frame.grid(row=1, column=0, sticky=N + S + E + W)
 
+        def button_press(y, x, buttons):
 
-        def button_press(y, x, button_collection_set):
-            childes = button_frame.children
-            print("hi", x, y)
-            button_collection_set[(x, y)].configure(bg="#66e0ff", state=DISABLED)
+            def buttons_state(new_state: str):
+                """State: On, Off, All_On, All_Off"""
+                new_state = new_state.lower()
+                states = {
+                    "on": ("normal", False),
+                    "off": ("disabled", False),
+                    "all_on": ("normal", True),
+                    "all_off": ("disabled", True),
+                }
+
+                if states[new_state][1]:
+                    for _ in buttons:
+                        buttons[_].configure(state=states[new_state[0]])
+                else:
+                    buttons[(x, y)].configure(state=states[new_state[0]])
+
+
+            #   print("Debug:", x, y)
+            buttons[(x, y)].configure(bg="#66e0ff", state=DISABLED)
+            buttons_state("Off")
 
         height_rows = 10
         width_columns = 10
