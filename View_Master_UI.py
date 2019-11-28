@@ -35,14 +35,14 @@ class View:
 
                 if states[new_state][1]:
                     for _ in buttons:
-                        buttons[_].configure(state=states[new_state[0]])
+                        buttons[_].configure(state=states[new_state][0])
                 else:
-                    buttons[(x, y)].configure(state=states[new_state[0]])
+                    buttons[(x, y)].configure(state=states[new_state][0])
 
 
             #   print("Debug:", x, y)
             buttons[(x, y)].configure(bg="#66e0ff", state=DISABLED)
-            buttons_state("Off")
+            buttons_state("all_Off")
 
         height_rows = 10
         width_columns = 10
