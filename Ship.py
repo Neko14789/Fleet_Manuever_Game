@@ -1,18 +1,18 @@
 """Ship Module"""
+from Coordinate import Coordinate
 
 
 class Ship:
     """Class for the Ship of a Fleet in the Fleet Maneuver Game"""
 
-    def __init__(self, ship_type, ship_alignment, ship_position):
+    def __init__(self, ship_type: type(str), ship_alignment: type(str), ship_position: type(Coordinate)):
         """
         Creates a Ship.
 
-        Parameters:
-            ship_type (str): "C": ("Carrier"), "B": ("Battleship"), "D": ("Destroyer"), "S": ("Submarine")
-            ship_alignment (str): H = Horizontal, V = Vertical
-            ship_position (Coordinate.py.Coordinate) = Position of the Ship
+        :param ship_type: "C": ("Carrier"), "B": ("Battleship"), "D": ("Destroyer"), "S": ("Submarine")
+        :param ship_alignment: H = Horizontal, V = Vertical
         """
+
         from Coordinate import Coordinate
 
         ship_name_dict = self._get_name_dict_local_language()
@@ -74,16 +74,23 @@ class Ship:
             counter_ship_bounds_length -= 1
             times -= 1
 
-    def is_alive(self):
-        """Checks if the Ship is still alive"""
+    def is_alive(self) -> bool:
+        """
+        Checks if the Ship is still alive
+        :return: True = Ship still alive, False = Ship dead
+        """
         if self._ship_life_amount > 0:
             is_alive = True
         else:
             is_alive = False
         return is_alive
 
-    def was_hit(self, hit_position):
-        """Checks if the Ship was hit"""
+    def was_hit(self, hit_position:type(Coordinate)) -> bool:
+        """
+        Checks if the Ship was hit
+        :param hit_position: Hit Coordinate
+        :return: True = Ship got hit, False = Ship was not hit
+        """
         hit = False
         for x in self._all_ship_coordinates:
             if x == hit_position:
@@ -91,20 +98,30 @@ class Ship:
                 self._ship_life_amount -= 1
         return hit
 
-    def get_all_ship_coordinates(self):
-        """Outputs all Coordinates of the Ship"""
+    def get_all_ship_coordinates(self) -> list:
+        """
+        Outputs all Coordinates of the Ship
+        :return: All Ship Coordinates
+        """
         return self._all_ship_coordinates
 
-    def get_all_blocking_coordinates(self):
-        """Outputs all blocking Coordinates of the Ship"""
+    def get_all_blocking_coordinates(self) -> list:
+        """
+        Outputs all blocking Coordinates of the Ship
+        :return: All blocking Ship Coordinates
+        """
         return self._all_blocking_coordinates
 
-    def get_ship_type(self):
+    def get_ship_type(self) -> tuple:
         """Outputs the Type of the Ship"""
         return self._ship_type, self._ship_type_full
 
     @staticmethod
-    def _get_name_dict_local_language():
+    def _get_name_dict_local_language() -> dict:
+        """
+        Gets a Name dict for translation purpose...
+        :return: Ship Name, Length Dict
+        """
         import locale
         locale.setlocale(locale.LC_ALL, "")
         system_language = locale.getlocale()[0]
@@ -118,14 +135,28 @@ class Ship:
 
         # noinspection SpellCheckingInspection
         ship_name_dict_de = {
-            "C": ("Träger", 5),
-            "B": ("Schlachtschiff", 4),
-            "D": ("Zerstörer", 3),
-            "S": ("U-Boot", 2)
+            "C": "Träger",
+            "B": "Schlachtschiff",
+            "D": "Zerstörer",
+            "S": "U-Boot"
         }
+        # noinspectionend SpellCheckingInspection
+
+        ship_length_dict = {
+            "C": 5,
+            "B": 4,
+            "D": 3,
+            "S": 2
+        }
+
         if system_language == "de_DE":
             ship_name_dict = ship_name_dict_de
         else:
             ship_name_dict = ship_name_dict_en
+
+        ship_name_dict = {"C": (ship_name_dict["C"], ship_length_dict["C"]),
+                          "B": (ship_name_dict["B"], ship_length_dict["B"]),
+                          "D": (ship_name_dict["D"], ship_length_dict["D"]),
+                          "S": (ship_name_dict["S"], ship_length_dict["S"])}
 
         return ship_name_dict

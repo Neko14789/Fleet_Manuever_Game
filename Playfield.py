@@ -1,4 +1,5 @@
 """Playfield Module."""
+from Coordinate import Coordinate
 
 
 class Playfield:
@@ -9,7 +10,7 @@ class Playfield:
                          "water": "~"
                          }
 
-    def __init__(self, board_size):
+    def __init__(self, board_size: type(Coordinate)):
 
         self.playfield = [[Playfield.playfield_symbols["unknown"] for _ in range(board_size.x)]
                           for _ in range(board_size.y)]
@@ -17,25 +18,19 @@ class Playfield:
 
     #       Without this for _ in range ..., every entry would not be unique and so not able to be changed individual
 
-    def get_position_value(self, coordinate):
+    def get_position_value(self, coordinate: type(Coordinate)) -> str:
         """
         Gets the Value(Status) of one coordinate.
-
-        Parameters:
-            coordinate (Coordinate.py.Coordinate): the position as coordinate object
-
-        Returns:
-            str: Value(Status) of the coordinate
+        :param coordinate: The position as coordinate object
+        :return: Value(Status) of the coordinate
         """
         return self.playfield[coordinate.x - 1][coordinate.y - 1]
 
-    def set_position_value(self, coordinate, value):
+    def set_position_value(self, coordinate:type(Coordinate), value:type(str)):
         """
         Changes a Value(Status) of one coordinate.
-
-        Parameters:
-            coordinate (Coordinate.py.Coordinate): the position as coordinate object
-            value (str): the value/status of the field ("unknown": "□", "ship": "■", "water": "~")
+        :param coordinate: The position as coordinate object
+        :param value: The value/status of the field ("unknown": "□", "ship": "■", "water": "~")
         """
         self.playfield[coordinate.x - 1][coordinate.y - 1] = Playfield.playfield_symbols[value]
 

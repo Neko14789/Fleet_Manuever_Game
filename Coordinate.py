@@ -8,9 +8,9 @@ class Coordinate:
         """
         Coordinate Object with x and y value, default (0, 0)
 
-        Parameters:
-            x (int): X position
-            x (int): y position
+        :param x: X position
+        :param y: Y position
         """
+
         self.x = x
         self.y = y

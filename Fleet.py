@@ -5,17 +5,14 @@ from Ship import Ship
 class Fleet:
     """Class for the Fleet in the Fleet Maneuver Game"""
 
-    def create_fleet(self, board_size, fleet_seed=type(int)):
+    def create_fleet(self, board_size, fleet_seed=type(int)) -> list:
         """
         Creates a Fleet of 10 Ships of varying Type and returns the Fleet
-
-        Parameters:
-            board_size (Coordinate.py.Coordinate): Size of the Playfield
-            fleet_seed (int): Seed that defines the Fleet placement
-
-        Returns:
-            list: List of Ship.py.Ship Objects
+        :param board_size: Size of the Playfield
+        :param fleet_seed: Seed that defines the Fleet placement
+        :return: List of Ship.py.Ship Objects
         """
+
         import random
         from Coordinate import Coordinate
 
@@ -87,16 +84,12 @@ class Fleet:
         return fleet
 
     @staticmethod
-    def rules_placement_ok(current_ship=type(Ship), test_ship=type(Ship)):
+    def rules_placement_ok(current_ship=type(Ship), test_ship=type(Ship)) -> bool:
         """
         Checks if the two given ships positions don't touch each other in 1 unit radius
-
-        Parameters:
-            current_ship (Ship.py.Ship): 1st Ship
-            test_ship (Ship.py.Ship): 2nd Ship
-
-        Returns:
-            boolean: True = No Overlap etc. False = Overlap etc.
+        :param current_ship: 1st Ship
+        :param test_ship: 2nd Ship
+        :return: True = No Overlap etc. False = Overlap etc.
         """
         placement_ok = True
         for current_ship_position in current_ship.get_all_blocking_coordinates():

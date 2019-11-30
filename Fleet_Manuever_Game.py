@@ -5,8 +5,6 @@ from Player import Player
 from Playfield import Playfield
 import View_Master_UI
 
-#   import numpy
-
 
 board_size = Coordinate.Coordinate
 board_size.x = 10

@@ -1,4 +1,5 @@
 """Player Module"""
+from Coordinate import Coordinate
 
 
 class Player:
@@ -7,17 +8,9 @@ class Player:
     """
     Player_Count = 0
 
-    def __init__(self, board_size, fleet_seed, player_name="Undefined"):
-        """
-        Creates a Player with a Fleet of 10 Ships of varying Type
+    def __init__(self, board_size: type(Coordinate), fleet_seed: type(int), player_name: type(str) = "Undefined"):
 
-        Parameters:
-            board_size (Coordinate.py.Coordinate): Size of the Playfield
-            fleet_seed (int): Seed that defines the Fleet placement
-            player_name (str): Name of the Player
-        """
         from Fleet import Fleet
-#       from Coordinate import Coordinate
 
         Player.Player_Count += 1
         fleet_class = Fleet()
