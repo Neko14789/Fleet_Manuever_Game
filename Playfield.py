@@ -1,4 +1,9 @@
+"""Playfield Module."""
+
+
 class Playfield:
+    """This is a class for a variable Playfield for the Fleet_Maneuver_Game."""
+
     playfield_symbols = {"unknown": "□",
                          "ship": "■",
                          "water": "~"
@@ -9,24 +14,47 @@ class Playfield:
         self.playfield = [[Playfield.playfield_symbols["unknown"] for _ in range(board_size.x)]
                           for _ in range(board_size.x)]
         self.board_size = board_size
-#       Without this for _ in range ... every entry would not be unique and so not able to be changed individual
+
+    #       Without this for _ in range ..., every entry would not be unique and so not able to be changed individual
 
     def get_position_value(self, coordinate):
-        return self.playfield[coordinate.y - 1][coordinate.x - 1]
+        """
+        Gets the Value(Status) of one coordinate.
 
-    def set_position_value(self, coordinate, status):
-        self.playfield[coordinate.y - 1][coordinate.x - 1] = Playfield.playfield_symbols[status]
+        Parameters:
+            coordinate (Coordinate.py.Coordinate): the position as coordinate object
+
+        Returns:
+            str: Value(Status) of the coordinate
+        """
+        return self.playfield[coordinate.y][coordinate.x]
+
+    def set_position_value(self, coordinate, value):
+        """
+        Changes a Value(Status) of one coordinate.
+
+        Parameters:
+            coordinate (Coordinate.py.Coordinate): the position as coordinate object
+            value (str): the value/status of the field ("unknown": "□", "ship": "■", "water": "~")
+        """
+        self.playfield[coordinate.y][coordinate.x] = Playfield.playfield_symbols[value]
 
     def draw_playfield(self):
+        """
+        Draws the Playfield.
+        """
         for x in self.playfield:
             timer = 0
             row = ""
             for y in x:
                 row += y + "  "
                 timer += 1
-                if timer == self.board_size.x + 1:
+                if timer == self.board_size.x:
                     print(format(row))
 
     def draw_playfield_2(self):
+        """
+        Different Approach to draw the Playfield.
+        """
         for x in self.playfield:
             print(x)

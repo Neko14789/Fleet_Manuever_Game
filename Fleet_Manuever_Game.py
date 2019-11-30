@@ -1,3 +1,4 @@
+"""Fleet_Maneuver_Game Module"""
 import Coordinate
 import Fleet
 import Player
@@ -18,10 +19,8 @@ TestShip = TestFleet_Test[1]
 TestShip_Type = TestShip.get_ship_type()
 print(TestShip_Type)
 
-
 Player_1 = Player.Player(board_size, 1)
 Player_2 = Player.Player(board_size, 2)
-
 
 TestPlayfield = Playfield.Playfield(board_size)
 
@@ -39,7 +38,7 @@ TestPlayfield.set_position_value(board_size, status)
 
 board_size.x = 9
 TestValue = TestPlayfield.get_position_value(board_size)
-print("Test 2:"+TestValue)
+print("Test 2:" + TestValue)
 
 TestPlayfield.draw_playfield()
 TestPlayfield.draw_playfield_2()

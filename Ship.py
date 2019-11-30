@@ -1,7 +1,18 @@
+"""Ship Module"""
+
+
 class Ship:
     """Class for the Ship of a Fleet in the Fleet Maneuver Game"""
 
     def __init__(self, ship_type, ship_alignment, ship_position):
+        """
+        Creates a Ship.
+
+        Parameters:
+            ship_type (str): "C": ("Carrier"), "B": ("Battleship"), "D": ("Destroyer"), "S": ("Submarine")
+            ship_alignment (str): H = Horizontal, V = Vertical
+            ship_position (Coordinate.py.Coordinate) = Position of the Ship
+        """
         import Coordinate
 
         ship_name_dict = self._get_name_dict_local_language()
@@ -10,7 +21,7 @@ class Ship:
         ship_life_amount = ship_name_dict[ship_type][1]
 
         ship_length = ship_life_amount
-#       Update Global Variables
+        #       Update Global Variables
         self._ship_alignment = ship_alignment
         self._ship_position = ship_position
         self._ship_type = ship_type
@@ -19,12 +30,12 @@ class Ship:
         self._ship_life_amount = ship_life_amount
         self._all_ship_coordinates = []
         self._all_blocking_coordinates = []
-#       Update Global Variables
+        #       Update Global Variables
 
         counter_ship_length = ship_length - 1
 
         times = ship_length
-#       Make List of Ship Coordinates
+        #       Make List of Ship Coordinates
         while times > 0:
             if ship_alignment == 'H':
                 x = ship_position.x + counter_ship_length
