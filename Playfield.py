@@ -12,7 +12,7 @@ class Playfield:
     def __init__(self, board_size):
 
         self.playfield = [[Playfield.playfield_symbols["unknown"] for _ in range(board_size.x)]
-                          for _ in range(board_size.x)]
+                          for _ in range(board_size.y)]
         self.board_size = board_size
 
     #       Without this for _ in range ..., every entry would not be unique and so not able to be changed individual
@@ -27,7 +27,7 @@ class Playfield:
         Returns:
             str: Value(Status) of the coordinate
         """
-        return self.playfield[coordinate.y][coordinate.x]
+        return self.playfield[coordinate.x - 1][coordinate.y - 1]
 
     def set_position_value(self, coordinate, value):
         """
@@ -37,7 +37,7 @@ class Playfield:
             coordinate (Coordinate.py.Coordinate): the position as coordinate object
             value (str): the value/status of the field ("unknown": "□", "ship": "■", "water": "~")
         """
-        self.playfield[coordinate.y][coordinate.x] = Playfield.playfield_symbols[value]
+        self.playfield[coordinate.x - 1][coordinate.y - 1] = Playfield.playfield_symbols[value]
 
     def draw_playfield(self):
         """
@@ -45,7 +45,7 @@ class Playfield:
         """
         for x in self.playfield:
             timer = 0
-            row = ""
+            row = " "
             for y in x:
                 row += y + "  "
                 timer += 1

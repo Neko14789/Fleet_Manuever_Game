@@ -13,7 +13,7 @@ class Ship:
             ship_alignment (str): H = Horizontal, V = Vertical
             ship_position (Coordinate.py.Coordinate) = Position of the Ship
         """
-        import Coordinate
+        from Coordinate import Coordinate
 
         ship_name_dict = self._get_name_dict_local_language()
 
@@ -45,7 +45,7 @@ class Ship:
                 x = ship_position.x + counter_ship_length
                 y = ship_position.y
 
-            current_coordinate_position = Coordinate.Coordinate(x, y)
+            current_coordinate_position = Coordinate(x, y)
             counter_ship_length -= 1
             self._all_ship_coordinates.append(current_coordinate_position)
 
@@ -61,14 +61,14 @@ class Ship:
                 for n in range(-1, 2):
                     x = ship_position.x - 1 + counter_ship_bounds_length
                     y = ship_position.y + n
-                    current_blocking_coordinate_position = Coordinate.Coordinate(x, y)
+                    current_blocking_coordinate_position = Coordinate(x, y)
                     self._all_blocking_coordinates.append(current_blocking_coordinate_position)
 
             else:
                 for n in range(-1, 2):
                     x = ship_position.y - 1 + counter_ship_bounds_length
                     y = ship_position.x + n
-                    current_blocking_coordinate_position = Coordinate.Coordinate(x, y)
+                    current_blocking_coordinate_position = Coordinate(x, y)
                     self._all_blocking_coordinates.append(current_blocking_coordinate_position)
 
             counter_ship_bounds_length -= 1

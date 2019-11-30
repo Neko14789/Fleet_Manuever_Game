@@ -1,5 +1,5 @@
 """Fleet Module"""
-import Ship
+from Ship import Ship
 
 
 class Fleet:
@@ -17,7 +17,7 @@ class Fleet:
             list: List of Ship.py.Ship Objects
         """
         import random
-        import Coordinate
+        from Coordinate import Coordinate
 
         random.seed(fleet_seed)
 
@@ -58,8 +58,8 @@ class Fleet:
                         x = random.randrange(0, 10)
                         y = random.randrange(0, board_size.y - current_ship_length + 1)
 
-                    tmp_pos = Coordinate.Coordinate(x, y)
-                    current_ship = Ship.Ship(current_ship_type, current_ship_alignment, tmp_pos)
+                    tmp_pos = Coordinate(x, y)
+                    current_ship = Ship(current_ship_type, current_ship_alignment, tmp_pos)
 
                     create_current_ship = True
                     for test_ship in fleet:

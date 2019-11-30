@@ -1,8 +1,8 @@
 """Fleet_Maneuver_Game Module"""
 import Coordinate
-import Fleet
-import Player
-import Playfield
+from Fleet import Fleet
+from Player import Player
+from Playfield import Playfield
 import View_Master_UI
 
 #   import numpy
@@ -11,7 +11,7 @@ import View_Master_UI
 board_size = Coordinate.Coordinate
 board_size.x = 10
 board_size.y = 10
-fleet_class = Fleet.Fleet()
+fleet_class = Fleet()
 TestFleet_Test = fleet_class.create_fleet(board_size, 4468415)
 print("Test")
 
@@ -19,10 +19,10 @@ TestShip = TestFleet_Test[1]
 TestShip_Type = TestShip.get_ship_type()
 print(TestShip_Type)
 
-Player_1 = Player.Player(board_size, 1)
-Player_2 = Player.Player(board_size, 2)
+Player_1 = Player(board_size, 1)
+Player_2 = Player(board_size, 2)
 
-TestPlayfield = Playfield.Playfield(board_size)
+TestPlayfield = Playfield(board_size)
 
 TestValue = TestPlayfield.get_position_value(board_size)
 print("Test 1:" + TestValue)
