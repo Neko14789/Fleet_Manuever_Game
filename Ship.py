@@ -8,9 +8,8 @@ class Ship:
     def __init__(self, ship_type: type(str), ship_alignment: type(str), ship_position: type(Coordinate)):
         """
         Creates a Ship.
-
-        :param ship_type: "C": ("Carrier"), "B": ("Battleship"), "D": ("Destroyer"), "S": ("Submarine")
-        :param ship_alignment: H = Horizontal, V = Vertical
+        @param ship_type: "C": ("Carrier"), "B": ("Battleship"), "D": ("Destroyer"), "S": ("Submarine")
+        @param ship_alignment: H = Horizontal, V = Vertical
         """
 
         from Coordinate import Coordinate
@@ -77,20 +76,22 @@ class Ship:
     def is_alive(self) -> bool:
         """
         Checks if the Ship is still alive
-        :return: True = Ship still alive, False = Ship dead
+        @return: True = Ship still alive, False = Ship dead
         """
+
         if self._ship_life_amount > 0:
             is_alive = True
         else:
             is_alive = False
         return is_alive
 
-    def was_hit(self, hit_position:type(Coordinate)) -> bool:
+    def was_hit(self, hit_position: type(Coordinate)) -> bool:
         """
         Checks if the Ship was hit
-        :param hit_position: Hit Coordinate
-        :return: True = Ship got hit, False = Ship was not hit
+        @param hit_position: Hit Coordinate
+        @return: True = Ship got hit, False = Ship was not hit
         """
+
         hit = False
         for x in self._all_ship_coordinates:
             if x == hit_position:
@@ -101,26 +102,30 @@ class Ship:
     def get_all_ship_coordinates(self) -> list:
         """
         Outputs all Coordinates of the Ship
-        :return: All Ship Coordinates
+        @return: All Ship Coordinates
         """
         return self._all_ship_coordinates
 
     def get_all_blocking_coordinates(self) -> list:
         """
         Outputs all blocking Coordinates of the Ship
-        :return: All blocking Ship Coordinates
+        @return: All blocking Ship Coordinates
         """
         return self._all_blocking_coordinates
 
     def get_ship_type(self) -> tuple:
-        """Outputs the Type of the Ship"""
+        """
+        Outputs the Type of the Ship
+        @return: Ship Type, Ship Type Full
+        """
+
         return self._ship_type, self._ship_type_full
 
     @staticmethod
     def _get_name_dict_local_language() -> dict:
         """
         Gets a Name dict for translation purpose...
-        :return: Ship Name, Length Dict
+        @return: Ship Name, Length Dict
         """
         import locale
         locale.setlocale(locale.LC_ALL, "")

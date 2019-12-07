@@ -21,16 +21,16 @@ class Playfield:
     def get_position_value(self, coordinate: type(Coordinate)) -> str:
         """
         Gets the Value(Status) of one coordinate.
-        :param coordinate: The position as coordinate object
-        :return: Value(Status) of the coordinate
+        @param coordinate: The position as coordinate object
+        @return: Value(Status) of the coordinate
         """
         return self.playfield[coordinate.x - 1][coordinate.y - 1]
 
     def set_position_value(self, coordinate:type(Coordinate), value:type(str)):
         """
         Changes a Value(Status) of one coordinate.
-        :param coordinate: The position as coordinate object
-        :param value: The value/status of the field ("unknown": "□", "ship": "■", "water": "~")
+        @param coordinate: The position as coordinate object
+        @param value: The value/status of the field ("unknown": "□", "ship": "■", "water": "~")
         """
         self.playfield[coordinate.x - 1][coordinate.y - 1] = Playfield.playfield_symbols[value]
 

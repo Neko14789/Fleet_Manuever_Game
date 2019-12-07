@@ -8,8 +8,8 @@ class Coordinate:
         """
         Coordinate Object with x and y value, default (0, 0)
 
-        :param x: X position
-        :param y: Y position
+        @param x: X position
+        @param y: Y position
         """
 
         self.x = x
