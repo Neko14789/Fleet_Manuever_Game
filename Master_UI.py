@@ -168,6 +168,7 @@ def show_info(event=None):
 root = Tk()
 root.title('Game "Testing"')
 root.configure(bg="light blue")
+#  root.geometry("1440x960")
 
 
 try:
@@ -182,15 +183,15 @@ root.configure(menu=main_menu())
 # TestLabel = Label(root)
 # TestLabel.grid(row=1, column=3)
 
-Grid.rowconfigure(root, 0, weight=4)
+Grid.rowconfigure(root, 0, weight=5)
 # Grid.rowconfigure(root, 1, weight=1)
-Grid.rowconfigure(root, 2, weight=1)
+Grid.rowconfigure(root, 2, weight=3)
 # Grid.rowconfigure(root, 3, weight=1)
-Grid.rowconfigure(root, 4, weight=4)
+Grid.rowconfigure(root, 4, weight=5)
 
-Grid.columnconfigure(root, 0, weight=1)
+Grid.columnconfigure(root, 0, weight=3)
 # Grid.columnconfigure(root, 1, weight=1)
-Grid.columnconfigure(root, 3, weight=3)
+Grid.columnconfigure(root, 3, weight=7)
 
 
 label_frame = label_frame(root, 10, 10, "Player 2", "Light grey")
@@ -214,7 +215,7 @@ root.geometry("+%d+%d" % (x, y))
 
 # This seems to draw the window frame immediately, so only call deiconify()
 # after setting correct window position
-root.deiconify() # Window in foreground
+root.deiconify()  # Window in foreground
 
 
 """Start App"""
