@@ -34,6 +34,7 @@ class View:
 
                 #   print("Debug:", x, y)
                 buttons[(x, y)].configure(bg="#66e0ff")
+
                 #buttons_state("all_off")
                 buttons_state("off")
 
@@ -60,30 +61,31 @@ class View:
             label_frame = LabelFrame(text="Playfield of Player 1", bg="#21b5ae")
             label_frame.grid(row=row, column=column, sticky=N + S + E + W)
 
-            """def button_press(y,x,buttons):
 
-                def buttons_state(new_state: str):
-                    #   State: On, Off, All_On, All_Off
-                    new_state = new_state.lower()
-                    try:
-                        states = {
-                            "on": ("normal",False),
-                            "off": ("disabled",False),
-                            "all_on": ("normal",True),
-                            "all_off": ("disabled",True),
-                        }
+            def label_state(new_state: str, x: int,y: int):
+                #   State: On, Off, All_On, All_Off
+                new_state = new_state.lower()
+                try:
+                    states = {
+                        "on": ("normal",False),
+                        "off": ("disabled",False),
+                        "all_on": ("normal",True),
+                        "all_off": ("disabled",True),
+                    }
 
-                        if states[new_state][1]:
-                            for _ in buttons:
-                                buttons[_].configure(state=states[new_state][0])
-                        else:
-                            buttons[(x,y)].configure(state=states[new_state][0])
-                    except KeyError:
-                        print("Button State Input Error, check the allowed states")
+                    if states[new_state][1]:
+                        for _ in label_collection_set:
+                            label_collection_set[_].configure(state=states[new_state][0])
+                    else:
 
-                #   print("Debug:", x, y)
-                buttons[(x,y)].configure(bg="#66e0ff")
-                buttons_state("Off")"""
+                        # label_collection_set[(x,y)].configure(state=states[new_state][0])
+                        label_collection_set[(x,y)].configure(bg="red")
+                except KeyError:
+                    print("Button State Input Error, check the allowed states")
+
+                # print("Debug:", x, y)
+                # label_collection_set[(x,y)].configure(bg="#66e0ff")
+                # label_state("Off")
 
             height_rows = 10
             width_columns = 10
@@ -98,12 +100,15 @@ class View:
 
                     label_collection_set[(i, j)] = label
 
-        """Button Frame configuration"""
+
+
+
+        """Label Frame configuration"""
 
         master = Tk()
 
-        create_button_frame(2, 0)
-        create_label_frame(1, 0)
+        button_frame = create_button_frame(2, 0)
+        label_frame = create_label_frame(1, 0)
         # create_button_frame(2,2)
         # create_label_frame(1,2)
 

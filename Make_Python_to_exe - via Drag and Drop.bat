@@ -1,2 +1,2 @@
 @echo off
-pyinstaller --onefile --icon=Fleet_Manuever_Game.ico "%~1"
+pyinstaller --onefile --icon=Fleet_Maneuver_Game.ico "%~1"
