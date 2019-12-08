@@ -16,19 +16,32 @@ def button_frame(master, height_rows: int = 10, width_columns: int = 10, frame_t
     @param frame_background_color: Background color of the Frame
     @return: Frame filled with Buttons
     """
-    btn_frame = LabelFrame(master, text=frame_text, bg=frame_background_color)
+    btn_frame = LabelFrame(master, text=frame_text, bg=frame_background_color, width=width_columns*50, height=height_rows*50)
 
+
+
+    index = 0
+    frames_list=[]
     button_collection_set = {}
-    for y in range(height_rows):  # Rows
-        Grid.columnconfigure(btn_frame, y)
-        for x in range(width_columns):  # Columns
-            Grid.rowconfigure(btn_frame, x)
-            btn = Button(btn_frame, cursor="crosshair", text="□■~", width=5, height=2, relief="solid")
-            btn.configure(command=lambda x_pos=x, y_pos=y, b=btn: button_press(x_pos, y_pos, b))
-            #   Type Coordinate.py for Button Position ?
-            btn.grid(row=y, column=x)
 
-            button_collection_set[(x, y)] = btn
+    for y in range(height_rows):  # Rows
+        Grid.columnconfigure(btn_frame, y, weight=1)
+        for x in range(width_columns):  # Columns
+            Grid.rowconfigure(btn_frame, x,  weight=1)
+
+            frames_list.append(Frame(btn_frame, width=40, height=40))
+            frames_list[index].propagate(False)
+            frames_list[index].grid(row=y, column=x, sticky=NSEW, padx=0.5, pady=0.5)
+
+            # btn = Button(btn_frame, cursor="crosshair", text="□■~", relief="solid")
+            # btn.configure(command=lambda x_pos=x, y_pos=y, b=btn: button_press(x_pos, y_pos, b))
+            #   Type Coordinate.py for Button Position ?
+            # btn.grid(row=y, column=x, sticky=NSEW, padx=0.5, pady=0.5)
+
+            button_collection_set[(x, y)] = Button(frames_list[index], cursor="crosshair", text="□■~", relief="solid")
+            button_collection_set[(x, y)].configure(command=lambda x_pos=x, y_pos=y, b=button_collection_set[(x, y)]: button_press(x_pos, y_pos, b))
+            button_collection_set[(x, y)].pack(expand=True, fill=BOTH)
+            index += 1
 
     return btn_frame
 
@@ -46,16 +59,23 @@ def label_frame(master, height_rows: int = 10, width_columns: int = 10, frame_te
     """
     lbl_frame = LabelFrame(master, text=frame_text, bg=frame_background_color)
 
+    index = 0
+    frames_list = []
     label_collection_set = {}
-    for y in range(height_rows):  # Rows
-        Grid.columnconfigure(lbl_frame, y)
-        for x in range(width_columns):  # Columns
-            Grid.rowconfigure(lbl_frame, x)
-            lbl = Label(lbl_frame, cursor="dot", text="□■~", width=5, height=2, relief="solid")
-            #   Type Coordinate.py for Button Position ?
-            lbl.grid(row=y, column=x)
 
-            label_collection_set[(x, y)] = lbl
+    for y in range(height_rows):  # Rows
+        Grid.columnconfigure(lbl_frame, y, weight=1)
+        for x in range(width_columns):  # Columns
+            Grid.rowconfigure(lbl_frame, x, weight=1)
+
+            frames_list.append(Frame(lbl_frame, width=40, height=40))
+            frames_list[index].propagate(False)
+            frames_list[index].grid(row=y, column=x, sticky=NSEW, padx=0.5, pady=0.5)
+
+            label_collection_set[(x, y)] = Label(frames_list[index], cursor="dot", text="□■~", width=5, height=2, relief="groove")
+            label_collection_set[(x, y)].pack(expand=True, fill=BOTH)
+            index += 1
+
 
     return lbl_frame
 
@@ -85,12 +105,12 @@ def main_menu():
     main_menu.add_command(label="Play AI Game", underline=5, command=lambda master=main_menu: ai_game(master))
     # main_menu.bind_all("<Control-h>", self.__quit_game)
 
-    sub_menu_settings = Menu(main_menu)
+    sub_menu_settings = Menu(main_menu, tearoff=False)
     sub_menu_settings.add_command(label="Setting 1", underline=0,
                                   command=change_board_size)
     main_menu.add_cascade(label="Settings", menu=sub_menu_settings, underline=0)
 
-    sub_menu_help = Menu(main_menu)
+    sub_menu_help = Menu(main_menu, tearoff=False)
     sub_menu_help.add_command(label="Show Info", underline=7,
                               command=show_info)
     main_menu.add_cascade(label="Help", menu=sub_menu_help, underline=1)
@@ -143,6 +163,7 @@ def show_info(event=None):
     messagebox.showinfo("Info", "This Game was created by Nico Hübsch with Python")
 
 
+
 """Start of UI Creation"""
 root = Tk()
 root.title('Game "Testing"')
@@ -169,7 +190,7 @@ Grid.rowconfigure(root, 4, weight=4)
 
 Grid.columnconfigure(root, 0, weight=1)
 # Grid.columnconfigure(root, 1, weight=1)
-Grid.columnconfigure(root, 3, weight=10)
+Grid.columnconfigure(root, 3, weight=3)
 
 
 label_frame = label_frame(root, 10, 10, "Player 2", "Light grey")
