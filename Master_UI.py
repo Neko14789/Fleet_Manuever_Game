@@ -179,9 +179,12 @@ except TclError:
 
 """ADD Widgets"""
 root.configure(menu=main_menu())
-# root.eval('tk::PlaceWindow . center')
-# TestLabel = Label(root)
-# TestLabel.grid(row=1, column=3)
+
+
+"""TESTING"""
+separator = Frame(height=2, bd=1, relief=RAISED, bg="blue")
+separator.grid(row=2, column=1, columnspan=3, padx=5, pady=20, sticky=EW)
+"""TESTING"""
 
 Grid.rowconfigure(root, 0, weight=5)
 # Grid.rowconfigure(root, 1, weight=1)
@@ -195,7 +198,6 @@ Grid.columnconfigure(root, 3, weight=7)
 
 
 label_frame = label_frame(root, 10, 10, "Player 2", "Light grey")
-# label_frame.grid(ipadx=0.2, ipady=0.2, padx=0.6, pady=0.6)
 label_frame.grid(row=1, column=1)
 
 button_frame = button_frame(root, 10, 10, "You", "Light Green")
