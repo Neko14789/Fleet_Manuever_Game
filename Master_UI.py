@@ -1,8 +1,10 @@
 """UI Module for the Fleet Maneuver Game"""
 from tkinter import *
+from tkinter import ttk
 
 
 # from Coordinate import Coordinate
+
 
 
 def button_frame(master, height_rows: int = 10, width_columns: int = 10, frame_text: str = "Frame",
@@ -163,6 +165,30 @@ def show_info(event=None):
     messagebox.showinfo("Info", "This Game was created by Nico Hübsch with Python")
 
 
+def ship_tree_view(master):
+
+    tree = ttk.Treeview(master)
+
+    tree["columns"] = ("ships", "state")
+    tree.column("#0", width=30, minwidth=30, stretch=False)
+    tree.column("ships", width=100, minwidth=100, stretch=False)
+    tree.column("state", width=100, minwidth=100, stretch=False)
+
+    tree.heading("#0", text="ID", anchor=W)
+    tree.heading("ships", text="Ship", anchor=W)
+    tree.heading("state", text="State", anchor=W)
+
+    tree.insert("", 1, text="0", values=("Test Ship", "Alive"))
+
+    """Stops User from changing column width"""
+    def handle_click(event):
+        if tree.identify_region(event.x, event.y) == "separator":
+            return "break"
+
+    tree.bind('<Button-1>', handle_click)
+
+
+    return tree
 
 """Start of UI Creation"""
 root = Tk()
@@ -184,6 +210,9 @@ root.configure(menu=main_menu())
 """TESTING"""
 separator = Frame(height=2, bd=1, relief=RAISED, bg="blue")
 separator.grid(row=2, column=1, columnspan=3, padx=5, pady=20, sticky=EW)
+
+ShipList = ship_tree_view(root)
+ShipList.grid(row=2, column=3)
 """TESTING"""
 
 Grid.rowconfigure(root, 0, weight=5)
