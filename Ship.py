@@ -41,8 +41,8 @@ class Ship:
                 y = ship_position.y
 
             else:
-                x = ship_position.x + counter_ship_length
-                y = ship_position.y
+                x = ship_position.x
+                y = ship_position.y + counter_ship_length
 
             current_coordinate_position = Coordinate(x, y)
             counter_ship_length -= 1
@@ -94,7 +94,7 @@ class Ship:
 
         hit = False
         for x in self._all_ship_coordinates:
-            if x == hit_position:
+            if x.x == hit_position.x and x.y == hit_position.y:
                 hit = True
                 self._ship_life_amount -= 1
         return hit

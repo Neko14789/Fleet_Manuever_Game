@@ -19,10 +19,10 @@ class Fleet:
         random.seed(fleet_seed)
 
         ship_type_length_dict = {
-            1: ("C", 5),
-            2: ("B", 4),
-            4: ("D", 3),
-            7: ("S", 2),
+            1: ("C", 5),    #1
+            2: ("B", 4),    #2
+            4: ("D", 3),    #3
+            7: ("S", 2),    #4
         }
 
         ship_amount_in_fleet = 0
@@ -50,9 +50,9 @@ class Fleet:
 
                     if current_ship_alignment == "H":
                         x = random.randrange(0, board_size.x - current_ship_length + 1)  # BS10 - CSL2 + 1 + 1
-                        y = random.randrange(0, 10)
+                        y = random.randrange(0, board_size.y)
                     else:
-                        x = random.randrange(0, 10)
+                        x = random.randrange(0, board_size.x)
                         y = random.randrange(0, board_size.y - current_ship_length + 1)
 
                     tmp_pos = Coordinate(x, y)

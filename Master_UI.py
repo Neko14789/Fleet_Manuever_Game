@@ -4,6 +4,14 @@ from tkinter import ttk
 
 
 # from Coordinate import Coordinate
+from Playfield import Playfield
+from Coordinate import Coordinate
+from Fleet import Fleet
+button_collection_set = {}
+board_size = Coordinate(9,9)
+TestPlayfield = Playfield(board_size)
+p1_fleet = Fleet().create_fleet(board_size, 11)
+print("a")
 
 
 
@@ -23,8 +31,10 @@ def button_frame(master, height_rows: int = 10, width_columns: int = 10, frame_t
 
 
     index = 0
-    frames_list=[]
-    button_collection_set = {}
+    global button_collection_set
+    # button_collection_set = {}
+    frames_list = []
+
 
     for y in range(height_rows):  # Rows
         Grid.columnconfigure(btn_frame, y, weight=1)
@@ -33,7 +43,7 @@ def button_frame(master, height_rows: int = 10, width_columns: int = 10, frame_t
 
             frames_list.append(Frame(btn_frame, width=40, height=40))
             frames_list[index].propagate(False)
-            frames_list[index].grid(row=y, column=x, sticky=NSEW, padx=0.5, pady=0.5)
+            frames_list[index].grid(row=y, column=x, sticky=NSEW, padx=1, pady=1)
 
             # btn = Button(btn_frame, cursor="crosshair", text="□■~", relief="solid")
             # btn.configure(command=lambda x_pos=x, y_pos=y, b=btn: button_press(x_pos, y_pos, b))
@@ -72,7 +82,7 @@ def label_frame(master, height_rows: int = 10, width_columns: int = 10, frame_te
 
             frames_list.append(Frame(lbl_frame, width=40, height=40))
             frames_list[index].propagate(False)
-            frames_list[index].grid(row=y, column=x, sticky=NSEW, padx=0.5, pady=0.5)
+            frames_list[index].grid(row=y, column=x, sticky=NSEW, padx=1, pady=1)
 
             label_collection_set[(x, y)] = Label(frames_list[index], cursor="dot", text="□■~", width=5, height=2, relief="groove")
             label_collection_set[(x, y)].pack(expand=True, fill=BOTH)
@@ -83,9 +93,25 @@ def label_frame(master, height_rows: int = 10, width_columns: int = 10, frame_te
 
 
 def button_press(x, y, button):
+
+
     print("test {} {}".format(x, y))
     button.configure(bg="green")
 
+    current_cord = Coordinate(x,y)
+    #TestPlayfield.set_position_value(current_cord, "ship")
+
+    state = "water"
+    for ship in p1_fleet:
+        if ship.was_hit(current_cord):
+           state = "■"
+           break
+           #TestPlayfield.set_position_value(current_cord,"ship")
+
+
+    #TestPlayfield.set_position_value(current_cord, state)
+    #status = TestPlayfield.get_position_value(current_cord)
+    button_collection_set[(x,y)].configure(text=state)
 
 def main_menu():
     """
@@ -187,8 +213,35 @@ def ship_tree_view(master):
 
     tree.bind('<Button-1>', handle_click)
 
-
     return tree
+
+
+def random_fleet_button(master, height, width, frame_background_color: str = "Grey", btn_text: str = "□■~"):
+
+    btn_frame = Frame(master, bg=frame_background_color, width=width, height=height)
+    btn_frame.propagate(False)
+
+    btn = Button(btn_frame,text=btn_text,relief="solid")
+    btn.configure(command=lambda b=btn: random_fleet_button_press(b))
+
+    btn.pack(expand=True,fill=BOTH)
+
+    return btn_frame
+
+
+def random_fleet_button_press(button):
+    print("Creating Fleet (hopefully)")
+
+
+
+    for x in range(10):
+        for y in range(10):
+            current_cord = Coordinate(x,y)
+            status = TestPlayfield.get_position_value(current_cord)
+            button_collection_set[(x, y)].configure(text=status)
+    #
+    pass
+
 
 """Start of UI Creation"""
 root = Tk()
@@ -213,6 +266,9 @@ separator.grid(row=2, column=1, columnspan=3, padx=5, pady=20, sticky=EW)
 
 ShipList = ship_tree_view(root)
 ShipList.grid(row=2, column=3)
+
+random_fleet_button = random_fleet_button(root,200,80,btn_text="New Fleet")
+random_fleet_button.grid(row=1, column=3)
 """TESTING"""
 
 Grid.rowconfigure(root, 0, weight=5)
