@@ -56,6 +56,7 @@ class Ui_LoginWindow(object):
 
     def setup(self):
         self.pushButton.clicked.connect(self.openWindow)
+        self.lineEdit.setMaxLength(42)
 
     def retranslateUi(self, LoginWindow):
         _translate = QtCore.QCoreApplication.translate

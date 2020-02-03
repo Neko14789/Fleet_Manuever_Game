@@ -71,6 +71,7 @@ class Ui_ChatWindow(object):
     def setup(self):
         self.pushButton.clicked.connect(self.sendMessage)
         self.pushButton.setShortcut("Return")
+        self.lineEdit.setMaxLength(2000)
 
 
     def setupConnection(self, my_User_Name="NO_USERNAME"):
