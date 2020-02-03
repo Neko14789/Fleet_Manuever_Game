@@ -192,7 +192,7 @@ class Ui_ChatWindow(object):
         _translate = QtCore.QCoreApplication.translate
         ChatWindow.setWindowTitle(_translate("ChatWindow", "Nicochat - Lets Chat"))
         self.groupBox.setTitle(_translate("ChatWindow", "Chat: logged in as <PLACEHOLDER>"))
-        self.lineEdit.setPlaceholderText(_translate("ChatWindow", "Here goes your Message that you want to Send"))
+        self.lineEdit.setPlaceholderText(_translate("ChatWindow", "Here goes your text"))
         self.pushButton.setToolTip(_translate("ChatWindow", "You can also just press the ENTER key on your Keyboard"))
         self.pushButton.setText(_translate("ChatWindow", "Send"))
         self.pushButton.setShortcut(_translate("ChatWindow", "Return"))
