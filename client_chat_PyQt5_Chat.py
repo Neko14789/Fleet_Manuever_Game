@@ -37,14 +37,14 @@ class Ui_ChatWindow(object):
         self.groupBox.setObjectName("groupBox")
         self.gridLayout_2 = QtWidgets.QGridLayout(self.groupBox)
         self.gridLayout_2.setObjectName("gridLayout_2")
-        self.textEdit = QtWidgets.QTextEdit(self.groupBox)
+        self.lineEdit = QtWidgets.QLineEdit(self.groupBox)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Maximum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.textEdit.sizePolicy().hasHeightForWidth())
-        self.textEdit.setSizePolicy(sizePolicy)
-        self.textEdit.setObjectName("textEdit")
-        self.gridLayout_2.addWidget(self.textEdit, 1, 0, 1, 1)
+        sizePolicy.setHeightForWidth(self.lineEdit.sizePolicy().hasHeightForWidth())
+        self.lineEdit.setSizePolicy(sizePolicy)
+        self.lineEdit.setObjectName("lineEdit")
+        self.gridLayout_2.addWidget(self.lineEdit, 1, 0, 1, 1)
         self.textBrowser = QtWidgets.QTextBrowser(self.groupBox)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
@@ -70,6 +70,8 @@ class Ui_ChatWindow(object):
 
     def setup(self):
         self.pushButton.clicked.connect(self.sendMessage)
+        self.pushButton.setShortcut("Return")
+
 
     def setupConnection(self, my_User_Name="NO_USERNAME"):
 
@@ -77,7 +79,8 @@ class Ui_ChatWindow(object):
             changeMessage = pyqtSignal(str)
 
             HEADER_LENGTH = 10
-            IP = socket.gethostbyname('nico14789.ddns.net')
+            #IP = socket.gethostbyname('nico14789.ddns.net')
+            IP = socket.gethostname()
             PORT = 4230
 
 
@@ -172,7 +175,8 @@ class Ui_ChatWindow(object):
 
     def sendMessage(self):
 
-        message = self.textEdit.toPlainText()
+        message = self.lineEdit.text()
+        self.lineEdit.clear()
 
         self.Network_Server_Thread.Multiplayer_Update(message)
 
@@ -187,7 +191,7 @@ class Ui_ChatWindow(object):
         _translate = QtCore.QCoreApplication.translate
         ChatWindow.setWindowTitle(_translate("ChatWindow", "Nicochat - Lets Chat"))
         self.groupBox.setTitle(_translate("ChatWindow", "Chat: logged in as <PLACEHOLDER>"))
-        self.textEdit.setPlaceholderText(_translate("ChatWindow", "Here goes your Message that you want to Send"))
+        self.lineEdit.setPlaceholderText(_translate("ChatWindow", "Here goes your Message that you want to Send"))
         self.pushButton.setToolTip(_translate("ChatWindow", "You can also just press the ENTER key on your Keyboard"))
         self.pushButton.setText(_translate("ChatWindow", "Send"))
         self.pushButton.setShortcut(_translate("ChatWindow", "Return"))

@@ -70,6 +70,7 @@ class Ship:
                     current_blocking_coordinate_position = Coordinate(x, y)
                     self._all_blocking_coordinates.append(current_blocking_coordinate_position)
 
+
             counter_ship_bounds_length -= 1
             times -= 1
 

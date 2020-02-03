@@ -5,7 +5,8 @@ from tkinter import *
 from unicodedata import east_asian_width
 
 HEADER_LENGTH = 10
-IP = socket.gethostbyname('nico14789.ddns.net')
+#IP = socket.gethostbyname('nico14789.ddns.net')
+IP = socket.gethostname()
 PORT = 4230
 
 Login = Tk()

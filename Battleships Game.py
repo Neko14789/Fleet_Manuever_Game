@@ -17,8 +17,7 @@ class Ship:
         self._ship_length = ship_name_dict[ship_type][1]
         self._ship_life_amount = self._ship_length
 
-        self._create_ship_part_coordinates(self._ship_alignment,self._ship_position)
-
+        self._create_ship_part_coordinates(self._ship_alignment, self._ship_position)
 
     @staticmethod
     def _get_name_dict_local_language() -> dict:
