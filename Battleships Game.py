@@ -1,6 +1,31 @@
 """This is the Battleships Game by Nico Hübsch"""
 
 
+class Coordinate:
+    """"Coordinate Object Structure"""
+
+    def __init__(self, x: type(int), y: type(int), status: type(str) = "unknown"):
+        """
+        Coordinate Object with x and y value, default (0, 0)
+
+        @param x: X position
+        @param y: Y position
+        @param status: Status of the coordinate
+        """
+
+        self.x = x
+        self.y = y
+
+
+        self.status = status
+
+    def get_status(self, my_playfield: type(bool)):
+        """
+        @param my_playfield: 0 for not my playfield, 1 for my playfield
+        """
+        pass
+
+
 class Ship:
 
     def __init__(self, ship_type: type(str), ship_alignment: type(str), ship_position: type(tuple)):
@@ -72,6 +97,7 @@ class Ship:
         coordinate = (ship_position, status)
         ship_part_coordinates.append(coordinate)
         print("test")
+
 
 class Fleet:
     pass
