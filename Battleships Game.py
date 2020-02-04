@@ -1,10 +1,10 @@
 """This is the Battleships Game by Nico Hübsch"""
 
-
+import Coordinate
 class Coordinate:
     """"Coordinate Object Structure"""
 
-    def __init__(self, x: type(int), y: type(int), status: type(str) = "unknown"):
+    def __init__(self, x: type(int), y: type(int)):
         """
         Coordinate Object with x and y value, default (0, 0)
 
@@ -17,35 +17,104 @@ class Coordinate:
         self.y = y
 
 
-        self.status = status
-
-    def get_status(self, my_playfield: type(bool)):
-        """
-        @param my_playfield: 0 for not my playfield, 1 for my playfield
-        """
-        pass
-
-
 class Ship:
+    """
+    A Ship for the Battleships Game
+    """
+    def __init__(self, ship_type: type(str), ship_alignment: type(str), ship_position: type(Coordinate)) -> object:
+        self.ship_alignment = ship_alignment
+        self.ship_position = ship_position
+        self.ship_type = ship_type
 
-    def __init__(self, ship_type: type(str), ship_alignment: type(str), ship_position: type(tuple)):
-        self._ship_alignment = ship_alignment
-        self._ship_position = ship_position
-        self._ship_type = ship_type
+        self.all_ship_coordinates = []
+        self.all_blocking_coordinates = []
 
-        self._all_ship_coordinates = []
-        self._all_blocking_coordinates = []
+        ship_name_dict = self._get_ship_name_dict_local_language()
 
-        ship_name_dict = self._get_name_dict_local_language()
+        self.ship_type_full = ship_name_dict[ship_type][0]
+        self.ship_length = ship_name_dict[ship_type][1]
+        self.ship_life_amount = self.ship_length
 
-        self._ship_type_full = ship_name_dict[ship_type][0]
-        self._ship_length = ship_name_dict[ship_type][1]
-        self._ship_life_amount = self._ship_length
+        self.all_ship_coordinates = self.create_ship_part_coordinates(self.ship_alignment, self.ship_position,
+                                                                      self.ship_length)
+        self.all_blocking_coordinates = self.create_ship_blocking_coordinates(self.ship_alignment, self.ship_position,
+                                                                              self.ship_length)
 
-        self._create_ship_part_coordinates(self._ship_alignment, self._ship_position)
+        print(self)
 
     @staticmethod
-    def _get_name_dict_local_language() -> dict:
+    def create_ship_part_coordinates(ship_alignment: type(str), ship_position: type(Coordinate), ship_length: type(int)) -> list:
+        """
+        creates a list of coordinates of ship
+        @param ship_alignment:
+        @param ship_position:
+        @param ship_length:
+        @return: coordinates list
+        """
+        ship_part_coordinates = []
+        for _ in range(ship_length):
+            if ship_alignment == "h":
+
+                x = ship_position.x + _
+                y = ship_position.y
+
+            elif ship_alignment == "v":
+                x = ship_position.x
+                y = ship_position.y + _
+
+            else:
+                raise ValueError(f"ship_alignment can only be 'h' or 'v', not '{ship_alignment}'")
+
+            coordinate = Coordinate(x, y)
+
+            ship_part_coordinates.append(coordinate)
+
+        return ship_part_coordinates
+
+    @staticmethod
+    def create_ship_blocking_coordinates(ship_alignment: type(str), ship_position: type(Coordinate), ship_length: type(int)) -> list:
+        """
+        creates a list of coordinates that the ship is blocking
+        @param ship_alignment:
+        @param ship_position:
+        @param ship_length:
+        @return: coordinates list
+        """
+        ship_blocking_coordinates = []
+        for width in range(-1, 2):
+            for _ in range(-1,ship_length + 1):
+                if ship_alignment == "h":
+
+                    x = ship_position.x + _
+                    y = ship_position.y + width
+
+                elif ship_alignment == "v":
+                    x = ship_position.x + width
+                    y = ship_position.y + _
+
+                else:
+                    raise ValueError(f"ship_alignment can only be 'h' or 'v', not {ship_alignment}")
+
+                coordinate = Coordinate(x, y)
+
+                ship_blocking_coordinates.append(coordinate)
+
+        return ship_blocking_coordinates
+
+    def is_alive(self) -> bool:
+        """
+        Checks if the Ship is still alive
+        @return: True = Ship still alive, False = Ship dead
+        """
+
+        if self.ship_life_amount > 0:
+            is_alive = True
+        else:
+            is_alive = False
+        return is_alive
+
+    @staticmethod
+    def _get_ship_name_dict_local_language() -> dict:
         """
         Gets a Name dict for translation purpose...
         @return: Ship Name, Length Dict
@@ -89,16 +158,13 @@ class Ship:
 
         return ship_name_dict
 
-    @staticmethod
-    def _create_ship_part_coordinates(ship_alignment: type(str), ship_position: type(tuple)):
-
-        ship_part_coordinates = []
-        status = "alive"
-        coordinate = (ship_position, status)
-        ship_part_coordinates.append(coordinate)
-        print("test")
-
-
+    def __str__(self):
+        return(f"Ship Object:\n"
+               f"\t Type: {self.ship_type} ({self.ship_type_full})\n"
+               f"\t Position: {self.ship_position.x, self.ship_position.y}\n"
+               f"\t Length: {self.ship_length}\n"
+               f"\t Alignment: {self.ship_alignment}\n"
+               f"\t Is Alive ?: {self.is_alive()}\n")
 class Fleet:
     pass
 
@@ -153,5 +219,5 @@ class MasterUi(QMainWindow):
 #
 # window()
 
-newShip = Ship("c", "h", (2, 6))
+newShip = Ship("c", "h", Coordinate(2, 4))
 print("test")
