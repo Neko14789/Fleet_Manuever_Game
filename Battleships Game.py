@@ -10,7 +10,6 @@ class Coordinate:
 
         @param x: X position
         @param y: Y position
-        @param status: Status of the coordinate
         """
 
         self.x = x
@@ -39,8 +38,6 @@ class Ship:
                                                                       self.ship_length)
         self.all_blocking_coordinates = self.create_ship_blocking_coordinates(self.ship_alignment, self.ship_position,
                                                                               self.ship_length)
-
-        print(self)
 
     @staticmethod
     def create_ship_part_coordinates(ship_alignment: type(str), ship_position: type(Coordinate), ship_length: type(int)) -> list:
@@ -112,6 +109,19 @@ class Ship:
         else:
             is_alive = False
         return is_alive
+
+    def was_hit(self, hit_position: type(Coordinate), reduce_life: type(bool) = True) -> bool:
+        """
+
+        @param hit_position:
+        @param reduce_life: choose if running this method should reduce ship life by 1
+        """
+        for asc in self.all_ship_coordinates:
+            if asc.x == hit_position.x and asc.y == hit_position.y:
+                if reduce_life:
+                    self.ship_life_amount -= 1
+                return True
+        return False
 
     @staticmethod
     def _get_ship_name_dict_local_language() -> dict:
@@ -220,4 +230,5 @@ class MasterUi(QMainWindow):
 # window()
 
 newShip = Ship("c", "h", Coordinate(2, 4))
-print("test")
+print(newShip)
+print(f"Hit ?{newShip.was_hit(Coordinate(5, 4), False)}")
