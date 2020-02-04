@@ -1,6 +1,6 @@
 """This is the Battleships Game by Nico Hübsch"""
 
-import Coordinate
+
 class Coordinate:
     """"Coordinate Object Structure"""
 
@@ -20,7 +20,7 @@ class Ship:
     """
     A Ship for the Battleships Game
     """
-    def __init__(self, ship_type: type(str), ship_alignment: type(str), ship_position: type(Coordinate)) -> object:
+    def __init__(self, ship_type: type(str), ship_alignment: type(str), ship_position: type(Coordinate)):
         self.ship_alignment = ship_alignment
         self.ship_position = ship_position
         self.ship_type = ship_type
@@ -175,8 +175,44 @@ class Ship:
                f"\t Length: {self.ship_length}\n"
                f"\t Alignment: {self.ship_alignment}\n"
                f"\t Is Alive ?: {self.is_alive()}\n")
+
+
 class Fleet:
-    pass
+    """
+    A Fleet, Collection of Ships
+    """
+    def __init__(self, board_size: type(Coordinate), fleet_seed: type(int)):
+        """
+        Creates a Fleet of 10 Ships of varying Type
+        :param board_size: Size of the Playfield
+        :param fleet_seed: Seed that defines the Fleet placement
+        """
+        ship_type_length_dict = Ship._get_ship_name_dict_local_language()
+
+        x = ship_type_length_dict["c"][1]
+        print(x)
+        """{
+        1: ("C", 5),  # 1
+        2: ("B", 4),  # 2
+        4: ("D", 3),  # 3
+        7: ("S", 2),  # 4
+        }"""
+        #        (Type, Amount)
+        ships = [("c", 1), ("b", 2), ("d", 3), ("s", 4)]
+        s_type,s_alignment,s_position = ships[s_number][0]
+
+        import random
+        s_type = ships[x][0]
+        s_alignment = random.choice(["h","v"])
+        s_position = Coordinate(random.
+
+        current_ship = Ships_type, s_alignment, s_position)
+        check_collision(current_ship)
+
+        pass
+
+    def create_ship(self, config):
+        newShip = Ship(config(1,2,3))
 
 
 class Playfield:
@@ -231,4 +267,5 @@ class MasterUi(QMainWindow):
 
 newShip = Ship("c", "h", Coordinate(2, 4))
 print(newShip)
-print(f"Hit ?{newShip.was_hit(Coordinate(5, 4), False)}")
+print(f"Hit ? {newShip.was_hit(Coordinate(5, 4), False)}")
+Fleet = Fleet(Coordinate(10, 10), 1321)
