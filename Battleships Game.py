@@ -79,7 +79,7 @@ class Ship:
         """
         ship_blocking_coordinates = []
         for width in range(-1, 2):
-            for _ in range(-1,ship_length + 1):
+            for _ in range(-1, ship_length + 1):
                 if ship_alignment == "h":
 
                     x = ship_position.x + _
@@ -174,7 +174,7 @@ class Ship:
                f"\t Position: {self.ship_position.x, self.ship_position.y}\n"
                f"\t Length: {self.ship_length}\n"
                f"\t Alignment: {self.ship_alignment}\n"
-               f"\t Is Alive ?: {self.is_alive()}\n")
+               f"\t Is Alive ?: {self.is_alive()}")
 
 
 class Fleet:
@@ -188,31 +188,36 @@ class Fleet:
         :param fleet_seed: Seed that defines the Fleet placement
         """
         ship_type_length_dict = Ship._get_ship_name_dict_local_language()
-
-        x = ship_type_length_dict["c"][1]
-        print(x)
-        """{
-        1: ("C", 5),  # 1
-        2: ("B", 4),  # 2
-        4: ("D", 3),  # 3
-        7: ("S", 2),  # 4
-        }"""
         #        (Type, Amount)
         ships = [("c", 1), ("b", 2), ("d", 3), ("s", 4)]
-        s_type,s_alignment,s_position = ships[s_number][0]
-
+        # s_type, s_alignment, s_position = ships[s_number][0]
         import random
-        s_type = ships[x][0]
-        s_alignment = random.choice(["h","v"])
-        s_position = Coordinate(random.
+        random.seed(fleet_seed)
+        self.ship_list = []
+        for ship in ships:
+            for _ in range(ship[1]):
+                while True:
+                    s_type = ship[0]
+                    s_alignment = random.choice(["h", "v"])
+                    if s_alignment == "h":
+                        s_position = Coordinate(random.randint(0, board_size.x-ship_type_length_dict[s_type][1]), random.randint(0,  board_size.y))
+                    else:  # if s_alignment == "v":
+                        s_position = Coordinate(random.randint(0, board_size.x), random.randint(0, board_size.y - ship_type_length_dict[s_type][1]))
+                    current_ship = Ship(s_type, s_alignment, s_position)
 
-        current_ship = Ships_type, s_alignment, s_position)
-        check_collision(current_ship)
-
+                    if not self.check_collision(current_ship):
+                        self.ship_list.append(current_ship)
+                        break
         pass
 
-    def create_ship(self, config):
-        newShip = Ship(config(1,2,3))
+    def check_collision(self, current_ship: type(Ship)):
+        for testship in self.ship_list:
+            for cs_abc in current_ship.all_blocking_coordinates:
+                for ts_asc in testship.all_ship_coordinates:
+                    if cs_abc.x == ts_asc.x and cs_abc.y == ts_asc.y:
+                        return True
+        return False
+
 
 
 class Playfield:
@@ -268,4 +273,4 @@ class MasterUi(QMainWindow):
 newShip = Ship("c", "h", Coordinate(2, 4))
 print(newShip)
 print(f"Hit ? {newShip.was_hit(Coordinate(5, 4), False)}")
-Fleet = Fleet(Coordinate(10, 10), 1321)
+Fleet = Fleet(Coordinate(9, 9), 1321)
