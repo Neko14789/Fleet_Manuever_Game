@@ -211,9 +211,9 @@ class Fleet:
         pass
 
     def check_collision(self, current_ship: type(Ship)):
-        for testship in self.ship_list:
+        for test_ship in self.ship_list:
             for cs_abc in current_ship.all_blocking_coordinates:
-                for ts_asc in testship.all_ship_coordinates:
+                for ts_asc in test_ship.all_ship_coordinates:
                     if cs_abc.x == ts_asc.x and cs_abc.y == ts_asc.y:
                         return True
         return False

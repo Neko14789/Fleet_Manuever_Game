@@ -28,13 +28,10 @@ def button_frame(master, height_rows: int = 10, width_columns: int = 10, frame_t
     """
     btn_frame = LabelFrame(master, text=frame_text, bg=frame_background_color, width=width_columns*50, height=height_rows*50)
 
-
-
     index = 0
     global button_collection_set
     # button_collection_set = {}
     frames_list = []
-
 
     for y in range(height_rows):  # Rows
         Grid.columnconfigure(btn_frame, y, weight=1)

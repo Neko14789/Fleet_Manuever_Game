@@ -70,6 +70,19 @@ class Ui_MainUIWindow(object):
         self.groupBoxPlayfieldP2.setSizePolicy(sizePolicy)
         self.groupBoxPlayfieldP2.setObjectName("groupBoxPlayfieldP2")
         self.gridLayout.addWidget(self.groupBoxPlayfieldP2, 3, 1, 1, 1)
+
+
+        class toolButton(QtWidgets.QGroupBox):
+            def __init__(self,parent=None):
+                QtWidgets.QToolButton.__init__(self,parent)
+                policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred,QtWidgets.QSizePolicy.Preferred)
+                policy.setHeightForWidth(True)
+                self.setSizePolicy(policy)
+
+            def heightForWidth(self,width):
+                return width
+
+
         self.groupBoxPlayfieldP1 = QtWidgets.QGroupBox(self.widget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
@@ -79,53 +92,16 @@ class Ui_MainUIWindow(object):
         self.groupBoxPlayfieldP1.setObjectName("groupBoxPlayfieldP1")
         self.gridLayout_2 = QtWidgets.QGridLayout(self.groupBoxPlayfieldP1)
         self.gridLayout_2.setObjectName("gridLayout_2")
-        self.toolButton_5 = QtWidgets.QToolButton(self.groupBoxPlayfieldP1)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Ignored, QtWidgets.QSizePolicy.Ignored)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.toolButton_5.sizePolicy().hasHeightForWidth())
-        self.toolButton_5.setSizePolicy(sizePolicy)
-        self.toolButton_5.setObjectName("toolButton_5")
-        self.gridLayout_2.addWidget(self.toolButton_5, 1, 1, 1, 1)
-        self.toolButton_6 = QtWidgets.QToolButton(self.groupBoxPlayfieldP1)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Ignored, QtWidgets.QSizePolicy.Ignored)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.toolButton_6.sizePolicy().hasHeightForWidth())
-        self.toolButton_6.setSizePolicy(sizePolicy)
-        self.toolButton_6.setObjectName("toolButton_6")
-        self.gridLayout_2.addWidget(self.toolButton_6, 1, 2, 1, 1)
-        self.toolButton_2 = QtWidgets.QToolButton(self.groupBoxPlayfieldP1)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Ignored, QtWidgets.QSizePolicy.Ignored)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.toolButton_2.sizePolicy().hasHeightForWidth())
-        self.toolButton_2.setSizePolicy(sizePolicy)
-        self.toolButton_2.setObjectName("toolButton_2")
-        self.gridLayout_2.addWidget(self.toolButton_2, 0, 1, 1, 1)
-        self.toolButton_3 = QtWidgets.QToolButton(self.groupBoxPlayfieldP1)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Ignored, QtWidgets.QSizePolicy.Ignored)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.toolButton_3.sizePolicy().hasHeightForWidth())
-        self.toolButton_3.setSizePolicy(sizePolicy)
-        self.toolButton_3.setObjectName("toolButton_3")
-        self.gridLayout_2.addWidget(self.toolButton_3, 0, 2, 1, 1)
-        
-        
+
         class toolButton(QtWidgets.QToolButton):
-            def __init__(self, parent=None):
-                QtWidgets.QToolButton.__init__(self, parent)
-                policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+            def __init__(self,parent=None):
+                QtWidgets.QToolButton.__init__(self,parent)
+                policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred,QtWidgets.QSizePolicy.Preferred)
                 policy.setHeightForWidth(True)
                 self.setSizePolicy(policy)
 
-
-
-            def heightForWidth(self, width):
+            def heightForWidth(self,width):
                 return width
-
-
 
 
         self.toolButton = toolButton(self.groupBoxPlayfieldP1)
@@ -135,42 +111,13 @@ class Ui_MainUIWindow(object):
         sizePolicy.setHeightForWidth(self.toolButton.sizePolicy().hasHeightForWidth())
         self.toolButton.setSizePolicy(sizePolicy)
         self.toolButton.setObjectName("toolButton")
-        
-        
-        
         self.gridLayout_2.addWidget(self.toolButton, 0, 0, 1, 1)
-        self.toolButton_4 = QtWidgets.QToolButton(self.groupBoxPlayfieldP1)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Ignored, QtWidgets.QSizePolicy.Ignored)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.toolButton_4.sizePolicy().hasHeightForWidth())
-        self.toolButton_4.setSizePolicy(sizePolicy)
-        self.toolButton_4.setObjectName("toolButton_4")
-        self.gridLayout_2.addWidget(self.toolButton_4, 1, 0, 1, 1)
-        self.toolButton_7 = QtWidgets.QToolButton(self.groupBoxPlayfieldP1)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Ignored, QtWidgets.QSizePolicy.Ignored)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.toolButton_7.sizePolicy().hasHeightForWidth())
-        self.toolButton_7.setSizePolicy(sizePolicy)
-        self.toolButton_7.setObjectName("toolButton_7")
-        self.gridLayout_2.addWidget(self.toolButton_7, 2, 0, 1, 1)
-        self.toolButton_8 = QtWidgets.QToolButton(self.groupBoxPlayfieldP1)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Ignored, QtWidgets.QSizePolicy.Ignored)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.toolButton_8.sizePolicy().hasHeightForWidth())
-        self.toolButton_8.setSizePolicy(sizePolicy)
-        self.toolButton_8.setObjectName("toolButton_8")
-        self.gridLayout_2.addWidget(self.toolButton_8, 2, 1, 1, 1)
-        self.toolButton_9 = QtWidgets.QToolButton(self.groupBoxPlayfieldP1)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Ignored, QtWidgets.QSizePolicy.Ignored)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.toolButton_9.sizePolicy().hasHeightForWidth())
-        self.toolButton_9.setSizePolicy(sizePolicy)
-        self.toolButton_9.setObjectName("toolButton_9")
-        self.gridLayout_2.addWidget(self.toolButton_9, 2, 2, 1, 1)
+
+
+
+
+
+
         self.gridLayout.addWidget(self.groupBoxPlayfieldP1, 1, 1, 1, 1)
         MainUIWindow.setCentralWidget(self.widget)
         self.menubar = QtWidgets.QMenuBar(MainUIWindow)
@@ -218,15 +165,8 @@ class Ui_MainUIWindow(object):
         self.treeWidgetFleetP1.setSortingEnabled(__sortingEnabled)
         self.groupBoxPlayfieldP2.setTitle(_translate("MainUIWindow", "GroupBox"))
         self.groupBoxPlayfieldP1.setTitle(_translate("MainUIWindow", "GroupBox"))
-        self.toolButton_5.setText(_translate("MainUIWindow", "..."))
-        self.toolButton_6.setText(_translate("MainUIWindow", "..."))
-        self.toolButton_2.setText(_translate("MainUIWindow", "..."))
-        self.toolButton_3.setText(_translate("MainUIWindow", "..."))
+
         self.toolButton.setText(_translate("MainUIWindow", "..."))
-        self.toolButton_4.setText(_translate("MainUIWindow", "..."))
-        self.toolButton_7.setText(_translate("MainUIWindow", "..."))
-        self.toolButton_8.setText(_translate("MainUIWindow", "..."))
-        self.toolButton_9.setText(_translate("MainUIWindow", "..."))
         self.menuJoin_Game.setTitle(_translate("MainUIWindow", "Join Game"))
         self.menuHost_Game.setTitle(_translate("MainUIWindow", "Host Game"))
         self.menuQuit_Game.setTitle(_translate("MainUIWindow", "Quit Game"))
