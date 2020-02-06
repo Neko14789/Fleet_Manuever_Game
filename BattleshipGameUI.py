@@ -72,15 +72,15 @@ class Ui_MainUIWindow(object):
         self.gridLayout.addWidget(self.groupBoxPlayfieldP2, 3, 1, 1, 1)
 
 
-        class toolButton(QtWidgets.QGroupBox):
-            def __init__(self,parent=None):
-                QtWidgets.QToolButton.__init__(self,parent)
-                policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred,QtWidgets.QSizePolicy.Preferred)
-                policy.setHeightForWidth(True)
-                self.setSizePolicy(policy)
-
-            def heightForWidth(self,width):
-                return width
+        # class toolButton(QtWidgets.QGroupBox):
+        #     def __init__(self,parent=None):
+        #         QtWidgets.QToolButton.__init__(self,parent)
+        #         policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred,QtWidgets.QSizePolicy.Preferred)
+        #         policy.setHeightForWidth(True)
+        #         self.setSizePolicy(policy)
+        #
+        #     def heightForWidth(self,width):
+        #         return width
 
 
         self.groupBoxPlayfieldP1 = QtWidgets.QGroupBox(self.widget)
@@ -93,7 +93,9 @@ class Ui_MainUIWindow(object):
         self.gridLayout_2 = QtWidgets.QGridLayout(self.groupBoxPlayfieldP1)
         self.gridLayout_2.setObjectName("gridLayout_2")
 
-        class toolButton(QtWidgets.QToolButton):
+        self.gridLayout_2.setSpacing(1)
+
+        class PushButton(QtWidgets.QPushButton):
             def __init__(self,parent=None):
                 QtWidgets.QToolButton.__init__(self,parent)
                 policy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred,QtWidgets.QSizePolicy.Preferred)
@@ -104,14 +106,27 @@ class Ui_MainUIWindow(object):
                 return width
 
 
-        self.toolButton = toolButton(self.groupBoxPlayfieldP1)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Ignored, QtWidgets.QSizePolicy.Ignored)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.toolButton.sizePolicy().hasHeightForWidth())
-        self.toolButton.setSizePolicy(sizePolicy)
-        self.toolButton.setObjectName("toolButton")
-        self.gridLayout_2.addWidget(self.toolButton, 0, 0, 1, 1)
+        self.buttons = {}
+        for x in range(10):
+            for y in range(10):
+
+
+
+                self.PushButton = PushButton(self.groupBoxPlayfieldP1)
+                sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Ignored, QtWidgets.QSizePolicy.Ignored)
+                sizePolicy.setHorizontalStretch(0)
+                sizePolicy.setVerticalStretch(0)
+                sizePolicy.setHeightForWidth(self.PushButton.sizePolicy().hasHeightForWidth())
+                self.PushButton.setSizePolicy(sizePolicy)
+                self.PushButton.setObjectName(f"PushButton_{x}_{y}")
+                self.PushButton.setText(f"PushButton_{x}_{y}")
+                self.PushButton.setMinimumSize(10, 10)
+
+                self.PushButton.clicked.connect(self.make_ButtonClicked(x, y))
+
+                self.buttons[(x, y)] = self.PushButton
+
+                self.gridLayout_2.addWidget(self.buttons[(x, y)], y, x, 1, 1)
 
 
 
@@ -149,6 +164,14 @@ class Ui_MainUIWindow(object):
         self.retranslateUi(MainUIWindow)
         QtCore.QMetaObject.connectSlotsByName(MainUIWindow)
 
+    def make_ButtonClicked(self,x,y):
+        def ButtonClicked():
+
+            print(f"debug_{x},{y}")
+            self.buttons[(x, y)].setDisabled(True)
+
+        return ButtonClicked
+
     def retranslateUi(self, MainUIWindow):
         _translate = QtCore.QCoreApplication.translate
         MainUIWindow.setWindowTitle(_translate("MainUIWindow", "Nico\'s Fleet Manuever Game!"))
@@ -166,7 +189,7 @@ class Ui_MainUIWindow(object):
         self.groupBoxPlayfieldP2.setTitle(_translate("MainUIWindow", "GroupBox"))
         self.groupBoxPlayfieldP1.setTitle(_translate("MainUIWindow", "GroupBox"))
 
-        self.toolButton.setText(_translate("MainUIWindow", "..."))
+        #self.toolButton.setText(_translate("MainUIWindow", "..."))
         self.menuJoin_Game.setTitle(_translate("MainUIWindow", "Join Game"))
         self.menuHost_Game.setTitle(_translate("MainUIWindow", "Host Game"))
         self.menuQuit_Game.setTitle(_translate("MainUIWindow", "Quit Game"))
