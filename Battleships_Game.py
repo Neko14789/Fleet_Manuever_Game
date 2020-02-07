@@ -1,6 +1,7 @@
 """This is the Battleships Game by Nico Hübsch"""
 
 
+
 class Coordinate:
     """"Coordinate Object Structure"""
 

@@ -9,7 +9,6 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-
 class Ui_MainUIWindow(object):
     def setupUi(self, MainUIWindow):
         MainUIWindow.setObjectName("MainUIWindow")
@@ -111,7 +110,6 @@ class Ui_MainUIWindow(object):
             for y in range(10):
 
 
-
                 self.PushButton = PushButton(self.groupBoxPlayfieldP1)
                 sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Ignored, QtWidgets.QSizePolicy.Ignored)
                 sizePolicy.setHorizontalStretch(0)
@@ -127,10 +125,6 @@ class Ui_MainUIWindow(object):
                 self.buttons[(x, y)] = self.PushButton
 
                 self.gridLayout_2.addWidget(self.buttons[(x, y)], y, x, 1, 1)
-
-
-
-
 
 
         self.gridLayout.addWidget(self.groupBoxPlayfieldP1, 1, 1, 1, 1)
@@ -166,7 +160,6 @@ class Ui_MainUIWindow(object):
 
     def make_ButtonClicked(self,x,y):
         def ButtonClicked():
-
             print(f"debug_{x},{y}")
             self.buttons[(x, y)].setDisabled(True)
 
