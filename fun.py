@@ -1,5 +1,8 @@
 name = ["Hübsch", "Wobrock", "Wallach", "Altarkawi"]
 vorname = ["Gerrit", "Nico", "Ben", "Mohammed"]
+
+# name = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+# vorname = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
 trys = 1000     # Max Amount of Names
 
 name_list = []
@@ -12,4 +15,5 @@ for x in range(trys):
             valid = False
     if valid:
         name_list.append(name_full)
-        print(name_full)
+        debug = str(x)+ " "
+        print( debug + name_full)
