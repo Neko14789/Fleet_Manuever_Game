@@ -1,6 +1,6 @@
 name = ["Hübsch", "Wobrock", "Wallach", "Altarkawi"]
 vorname = ["Gerrit", "Nico", "Ben", "Mohammed"]
-trys = 1000
+trys = 1000     # Max Amount of Names
 
 name_list = []
 import random
