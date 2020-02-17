@@ -257,19 +257,16 @@ class MasterUi(QMainWindow):
 
     def clicked(self):
         self.label.setText("du hast den Knopf gedrückt")
-        self.update()
-
-    def update(self):
         self.label.adjustSize()
 
 
-# def window():
-#     app = QApplication(sys.argv)
-#     win = MasterUi()
-#     win.show()
-#     sys.exit(app.exec_())
-#
-# window()
+def window():
+    app = QApplication(sys.argv)
+    win = MasterUi()
+    win.show()
+    sys.exit(app.exec_())
+
+window()
 
 newShip = Ship("c", "h", Coordinate(2, 4))
 print(newShip)
