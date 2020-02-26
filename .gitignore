@@ -8,5 +8,6 @@
 # Ignore Folder
 build/
 upx395win64/
-venv/
 
+/designer.exe - Verknüpfung.lnk
+/Testen mit Mo.py
