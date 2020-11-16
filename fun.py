@@ -1,5 +1,5 @@
-name = ["Hübsch", "Wobrock", "Wallach", "Altarkawi"]
-vorname = ["Gerrit", "Nico", "Ben", "Mohammed"]
+name = ["U", "V", "W", "X"]
+vorname = ["A", "B", "C", "D"]
 
 # name = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
 # vorname = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
